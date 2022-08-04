@@ -95,7 +95,7 @@ dl_snr(dc,d2,2) %13.33 dB
 % SNR=12.77 dB
 % 
 % flow=0;fhigh=125;dt=0.004;N=3;verb=0;
-% d2=drr3d(d,flow,fhigh,dt,N,verb); 
+% d2=drr3d(d,flow,fhigh,dt,N,5,verb); 
 % figure;imagesc([dc(:,:,10),d(:,:,10),d2(:,:,10),d(:,:,10)-d2(:,:,10)]);colormap(seis);
 % dl_snr(dc,d2,2) %12.771 dB
 
