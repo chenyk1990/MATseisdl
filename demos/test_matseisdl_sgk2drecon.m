@@ -61,7 +61,9 @@ end
 plane3d=shot;
 dc=dl_scale(plane3d,3);
 dc=dc(51:225,:,:);
-figure;imagesc(reshape(dc,175,20*20));%colormap(seis);
+
+%% select 1 slice from the 3D data as a 2D example
+dc=dc(:,:,10);
 
 %% adding noise
 randn('state',201314);
@@ -70,11 +72,11 @@ dn=dc+var*randn(size(dc));
 
 % decimate
 [nt,nx,ny]=size(dc);
-ratio=0.5;
+ratio=0.65;
 mask=dl_genmask(reshape(dc,nt,nx*ny),ratio,'c',201415);
 mask=reshape(mask,nt,nx,ny);
 d0=dn.*mask;
-figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10)]);%colormap(seis);
+figure;imagesc([dc,dn,d0]);%colormap(seis);
 
 %% simultaneous denoising and reconstruction
 % Linear initialization (not useful ?)
@@ -85,12 +87,12 @@ figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10)]);%colormap(seis);
 
 %% SGK
 param=struct('T',3,'niter',10,'mode',1,'K',64);
-mode=1;l1=6;l2=4;l3=4;s1=2;s2=2;s3=2;perc=4;Niter=12; %
+mode=1;l1=6;l2=4;l3=1;s1=2;s2=2;s3=1;perc=2;Niter=12; %
 a=(Niter-(1:Niter))/(Niter-1); %linearly decreasing for noisy data
 % a=ones(Niter,1);
 d1=dl_sgk_recon(d0,mask,mode,[l1,l2,l3],[s1,s2,s3],perc,Niter,a,param);
-figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10),d1(:,:,10)]);%colormap(seis);
-dl_snr(dc,d1,2)
+figure;imagesc([dc,dn,d0,d1]);%colormap(seis);
+dl_snr(dc,d1)
 
 %% KSVD
 % param=struct('T',2,'niter',10,'mode',1,'K',64);
@@ -98,13 +100,13 @@ dl_snr(dc,d1,2)
 % a=(Niter-(1:Niter))/(Niter-1); %linearly decreasing for noisy data
 % a=ones(Niter,1);
 d2=dl_ksvd_recon(d0,mask,mode,[l1,l2,l3],[s1,s2,s3],perc,Niter,a,param);
-figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10),d2(:,:,10)]);%colormap(seis);
-dl_snr(dc,d2,2)
+figure;imagesc([dc,dn,d0,d2]);%colormap(seis);
+dl_snr(dc,d2)
 
-dl_snr(dc,dn,2) %-0.0500
-dl_snr(dc,d0,2) %-0.0274
-dl_snr(dc,d1,2) %9.5695
-dl_snr(dc,d2,2) %8.8887
+dl_snr(dc,dn) %
+dl_snr(dc,d0) %
+dl_snr(dc,d1) %
+dl_snr(dc,d2) %
 
 
 %% benchmark with DRR (https://github.com/chenyk1990/MATdrr)
@@ -112,18 +114,18 @@ addpath(genpath('~/MATdrr'));
 flow=0;fhigh=125;dt=0.004;N=3;Niter=10;mode=1;verb=1;
 a=(Niter-(1:Niter))/(Niter-1); %linearly decreasing
 d3=drr3drecon(d0,mask,flow,fhigh,dt,N,5,Niter,eps,verb,mode,a);
-figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10),d3(:,:,10)]);%colormap(seis);
-dl_snr(dc,d3,2)
+figure;imagesc([dc,dn,d0,d3]);%colormap(seis);
+dl_snr(dc,d3)
 
 %% USING DRR as initial model
 param=struct('T',3,'niter',10,'mode',1,'K',64);
 param.d0=d3;
-mode=1;l1=6;l2=4;l3=4;s1=2;s2=2;s3=2;perc=4;Niter=5; %
+mode=1;l1=6;l2=4;l3=1;s1=2;s2=2;s3=1;perc=2;Niter=5; %
 a=(Niter-(1:Niter))/(Niter-1); %linearly decreasing for noisy data
 % a=ones(Niter,1);
 d4=dl_sgk_recon(d0,mask,mode,[l1,l2,l3],[s1,s2,s3],perc,Niter,a,param);
-figure;imagesc([dc(:,:,10),dn(:,:,10),d0(:,:,10),d4(:,:,10)]);%colormap(seis);
-dl_snr(dc,d4,2) %11.2173
+figure;imagesc([dc,dn,d0,d4]);%colormap(seis);
+dl_snr(dc,d4) %
 
 
 
