@@ -9,7 +9,9 @@
     Chen, Y. (2020). Fast dictionary learning for noise attenuation of multidimensional seismic data. Geophysical Journal International, 222(3), 1717-1727.
     
     Wang, H., Chen, W., Zhang, Q., Liu, X., Zu, S., & Chen, Y. (2020). Fast dictionary learning for high-dimensional seismic reconstruction. IEEE Transactions on Geoscience and Remote Sensing, 59(8), 7098-7108.
-    
+
+    Chen, Y., Savvaidis, A., and Fomel, S., (2023). Dictionary learning for single-channel passive seismic denoising, under review.
+	
 BibTeX:
 
 	@article{chen2020sgk,
@@ -35,6 +37,16 @@ BibTeX:
 	  year={2021}
 	}
 
+	@article{dl1dnoise,
+	  author={Yangkang Chen and Alexandros Savvaidis and Sergey Fomel},
+	  title = {Dictionary learning for single-channel passive seismic denoising},
+	  journal={TBD},
+	  year=2023,
+	  volume=X,
+	  issue=X,
+	  pages={under review},
+	  doi={XXX},
+	}
 -----------
 ## Copyright
 	The MATseisdl developing team, 2021-present
