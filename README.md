@@ -68,13 +68,13 @@ Using the latest version
 
 -----------
 ## Examples
-    The "demo" directory contains all runable scripts to demonstrate different applications of MATseisdl. 
+    The "demo" directory contains all runnable scripts to demonstrate different applications of MATseisdl. 
 
 -----------
 ## Gallery
 The gallery figures of the pydrr package can be found at
     https://github.com/chenyk1990/gallery/tree/main/matseisdl
-Each figure in the gallery directory corresponds to a DEMO script in the "demo" directory with the exactly the same file name.
+Each figure in the gallery directory corresponds to a DEMO script in the "demo" directory with the same file name.
 
 -----------
 ## Dependence Packages
@@ -83,11 +83,11 @@ Each figure in the gallery directory corresponds to a DEMO script in the "demo" 
 -----------
 ## Development
     The development team welcomes voluntary contributions from any open-source enthusiast. 
-    If you want to make contribution to this project, feel free to contact the development team. 
+    If you want to contribute to this project, feel free to contact the development team. 
 
 -----------
 ## Contact
-    Regarding any questions, bugs, developments, collaborations, please contact  
+    Regarding any questions, bugs, developments, or collaborations, please contact  
     Yangkang Chen
     chenyk2016@gmail.com
 
