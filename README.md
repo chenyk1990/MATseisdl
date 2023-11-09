@@ -10,7 +10,7 @@
     
     Wang, H., Chen, W., Zhang, Q., Liu, X., Zu, S., & Chen, Y. (2020). Fast dictionary learning for high-dimensional seismic reconstruction. IEEE Transactions on Geoscience and Remote Sensing, 59(8), 7098-7108.
 
-    Chen, Y., Savvaidis, A., and Fomel, S., (2023). Dictionary learning for single-channel passive seismic denoising, under review.
+    Chen, Y., Savvaidis, A., and Fomel, S., (2023). Dictionary learning for single-channel passive seismic denoising, Seismological Research Letters, 94, 2840-2851.
 	
 BibTeX:
 
@@ -42,10 +42,11 @@ BibTeX:
 	  title = {Dictionary learning for single-channel passive seismic denoising},
 	  journal={TBD},
 	  year=2023,
-	  volume=X,
-	  issue=X,
-	  pages={under review},
-	  doi={XXX},
+	  volume={94},
+	  number={6},
+	  issue={6},
+	  pages={2840-2851},
+	  doi={10.1785/0220230169},
 	}
 -----------
 ## Copyright
